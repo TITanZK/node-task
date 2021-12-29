@@ -1,0 +1,9 @@
+{
+  "name": "task-demo",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "3.0.2"
+  }
+}
