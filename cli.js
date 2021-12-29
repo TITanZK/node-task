@@ -1,5 +1,7 @@
 const program = require('commander');
 
+const api = require('./index.js')
+
 program
   .option('-d, --debug', 'output extra debugging')
 
@@ -8,7 +10,7 @@ program
   .description('add a task')
   .action((...source) => {
     const words = source.slice(0, -1).join(' ')
-    console.log(words);
+    api.add(words)
   });
 program
   .command('clear')
