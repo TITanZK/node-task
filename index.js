@@ -64,13 +64,23 @@ module.exports = {
                 });
                 break;
               case 'remove':
-                list.splce(index, 1)
+                list.splice(index, 1)
                 db.write(list)
                 break;
             }
           })
         } else if (index === -2) {
-
+          inquirer.prompt({
+            type: 'input',
+            name: 'title',
+            message: "Please enter a task title"
+          }).then(answers4 => {
+            list.push({
+              title: answers4.title,
+              done: false
+            })
+            db.write(list)
+          });
         }
       });
   }
