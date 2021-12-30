@@ -2,9 +2,10 @@
 
 const program = require('commander');
 const api = require('./index.js')
+const pkg = require('./package.json')
 
 program
-  .option('-d, --debug', 'output extra debugging')
+  .version(pkg.version)
 
 program
   .command('add')
