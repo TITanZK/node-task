@@ -17,7 +17,6 @@ const db = {
         resolve(list)
       })
     })
-
   },
   write(list, path = dbPath) {
     const todoString = JSON.stringify(list)
@@ -27,7 +26,6 @@ const db = {
         resolve()
       })
     })
-
   }
 }
 
