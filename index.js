@@ -1,4 +1,5 @@
 const db = require('./db.js')
+const inquirer = require('inquirer')
 
 module.exports = {
   async add(title) {
@@ -14,8 +15,21 @@ module.exports = {
   },
   async showAll() {
     const list = await db.read()
-    list.map((item, index) => {
-      console.log(`${item.done ? '[x]' : '[_]'} ${index + 1} - ${item.title}`)
+    const choicesArray = list.map((item, index) => {
+      return {
+        name: `${item.done ? '[x]' : '[_]'} ${index + 1} - ${item.title}`,
+        value: index.toString()
+      }
     })
+    inquirer
+      .prompt({
+        type: 'list',
+        name: 'index',
+        message: 'Please select the task that will be operated!',
+        choices: [{ name: 'quit', value: '-1' }, ...choicesArray, { name: '+ create a task', value: '-2' }]
+      })
+      .then((answers) => {
+        console.log(answers);
+      });
   }
 }
