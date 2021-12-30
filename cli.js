@@ -14,10 +14,9 @@ program
   });
 program
   .command('clear')
-  .description('clear a task')
-  .action((...source) => {
-    const words = source.slice(0, -1).join(' ')
-    console.log(words);
+  .description('clear all task')
+  .action(() => {
+    api.clear()
   });
 
 program.parse(process.argv);
